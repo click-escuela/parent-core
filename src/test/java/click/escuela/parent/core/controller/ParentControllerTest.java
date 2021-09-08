@@ -38,7 +38,7 @@ public class ParentControllerTest {
 	private MockMvc mockMvc;
 
 	@InjectMocks
-	private ParentController teacherController;
+	private ParentController parentController;
 
 	@Mock
 	private SchoolAdminServiceImpl schoolAdminServiceImpl;
@@ -52,12 +52,12 @@ public class ParentControllerTest {
 
 	@Before
 	public void setUp() {
-		mockMvc = MockMvcBuilders.standaloneSetup(teacherController).build();
+		mockMvc = MockMvcBuilders.standaloneSetup(parentController).build();
 		mapper = new ObjectMapper().findAndRegisterModules().disable(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES)
 				.configure(DeserializationFeature.UNWRAP_ROOT_VALUE, false)
 				.configure(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS, false);
 
-		ReflectionTestUtils.setField(teacherController, "schoolAdminServiceImpl", schoolAdminServiceImpl);
+		ReflectionTestUtils.setField(parentController, "schoolAdminServiceImpl", schoolAdminServiceImpl);
 		
 		StudentShortDTO student = new StudentShortDTO();
 		student.setId(studentId);

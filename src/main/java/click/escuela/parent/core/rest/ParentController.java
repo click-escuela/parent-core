@@ -28,7 +28,7 @@ public class ParentController {
 	@Operation(summary = "Get courses with grades", responses = {
 			@ApiResponse(responseCode = "200", content = @Content(mediaType = "application/json", schema = @Schema(implementation = StudentShortDTO.class))) })
 	@GetMapping(value = "/{parentId}/students", produces = { MediaType.APPLICATION_JSON_VALUE })
-	public ResponseEntity<List<StudentShortDTO>> getCoursesWithGrades(@PathVariable("schoolId") String schoolId,
+	public ResponseEntity<List<StudentShortDTO>> getStudentsWithGrades(@PathVariable("schoolId") String schoolId,
 			@PathVariable("parentId") String parentId){
 		return ResponseEntity.status(HttpStatus.ACCEPTED).body(schoolAdminServiceImpl.getStudentsWithGrades(schoolId, parentId));
 	}
