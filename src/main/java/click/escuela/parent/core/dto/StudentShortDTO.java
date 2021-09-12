@@ -24,5 +24,8 @@ public class StudentShortDTO {
 	
 	@JsonProperty(value = "grades")
 	private List<GradeDTO> grades;
+	
+	@JsonProperty(value = "bills")
+	private List<BillDTO> bills;
 
 }

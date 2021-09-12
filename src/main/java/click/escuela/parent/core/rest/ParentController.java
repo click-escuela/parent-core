@@ -25,11 +25,19 @@ public class ParentController {
 	@Autowired
 	private SchoolAdminServiceImpl schoolAdminServiceImpl;
  
-	@Operation(summary = "Get courses with grades", responses = {
+	@Operation(summary = "Get Students with grades", responses = {
 			@ApiResponse(responseCode = "200", content = @Content(mediaType = "application/json", schema = @Schema(implementation = StudentShortDTO.class))) })
 	@GetMapping(value = "/{parentId}/students", produces = { MediaType.APPLICATION_JSON_VALUE })
 	public ResponseEntity<List<StudentShortDTO>> getStudentsWithGrades(@PathVariable("schoolId") String schoolId,
 			@PathVariable("parentId") String parentId){
 		return ResponseEntity.status(HttpStatus.ACCEPTED).body(schoolAdminServiceImpl.getStudentsWithGrades(schoolId, parentId));
+	}
+	
+	@Operation(summary = "Get Students with bills", responses = {
+			@ApiResponse(responseCode = "200", content = @Content(mediaType = "application/json", schema = @Schema(implementation = StudentShortDTO.class))) })
+	@GetMapping(value = "/{parentId}/students/bills", produces = { MediaType.APPLICATION_JSON_VALUE })
+	public ResponseEntity<List<StudentShortDTO>> getStudentsWithBills(@PathVariable("schoolId") String schoolId,
+			@PathVariable("parentId") String parentId){
+		return ResponseEntity.status(HttpStatus.ACCEPTED).body(schoolAdminServiceImpl.getStudentsWithBills(schoolId, parentId));
 	}
 }

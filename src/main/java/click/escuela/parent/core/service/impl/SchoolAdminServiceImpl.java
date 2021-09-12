@@ -24,5 +24,11 @@ public class SchoolAdminServiceImpl {
 		}
 		return students;
 	}
+	
+	public List<StudentShortDTO> getStudentsWithBills(String schoolId, String parentId){
+		List<StudentShortDTO> students = schoolAdminConnector.getStudentsByParentId(schoolId, parentId, true);
+		students.stream().forEach(student -> student.setGrades(null));
+		return students;
+	}
 
 }
