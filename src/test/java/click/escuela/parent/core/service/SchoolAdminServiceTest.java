@@ -46,6 +46,7 @@ public class SchoolAdminServiceTest {
 		students.add(student);
 		
 		when(schoolAdminConnector.getStudentsByParentId(schoolId, parentId, false)).thenReturn(students);
+		when(schoolAdminConnector.getStudentsByParentId(schoolId, parentId, true)).thenReturn(students);
 		ReflectionTestUtils.setField(schoolAdminServiceImpl, "schoolAdminConnector", schoolAdminConnector);
 		ReflectionTestUtils.setField(schoolAdminServiceImpl, "gradeServiceImpl", gradeServiceImpl);
 	}
@@ -63,6 +64,12 @@ public class SchoolAdminServiceTest {
 
 		List<StudentShortDTO> students = schoolAdminServiceImpl.getStudentsWithGrades(schoolId,parentId);
 		assertThat(students).isEmpty();
+	}
+	
+	@Test
+	public void  getStudentsWithBills(){
+		schoolAdminServiceImpl.getStudentsWithBills(schoolId,parentId);
+		verify(schoolAdminConnector).getStudentsByParentId(schoolId, parentId, true);
 	}
 	
 }
