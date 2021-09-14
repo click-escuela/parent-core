@@ -3,16 +3,12 @@ package click.escuela.parent.core.dto;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import click.escuela.parent.core.enumerator.PaymentStatus;
-import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Getter
 @Setter
-@NoArgsConstructor
-@AllArgsConstructor
 @Builder
 public class BillDTO {
 
