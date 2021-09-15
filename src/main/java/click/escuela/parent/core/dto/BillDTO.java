@@ -4,11 +4,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 import click.escuela.parent.core.enumerator.PaymentStatus;
 import lombok.Builder;
-import lombok.Getter;
-import lombok.Setter;
 
-@Getter
-@Setter
 @Builder
 public class BillDTO {
 
