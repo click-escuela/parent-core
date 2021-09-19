@@ -67,6 +67,8 @@ public class ParentControllerTest {
 	
 		Mockito.when(schoolAdminServiceImpl.getStudentsWithGrades(schoolId, parentId))
 				.thenReturn(students);
+		Mockito.when(schoolAdminServiceImpl.getStudentsWithBills(schoolId, parentId))
+		.thenReturn(students);
 	}
 
 	@Test
@@ -77,6 +79,17 @@ public class ParentControllerTest {
 		Mockito.when(schoolAdminServiceImpl.getStudentsWithGrades(schoolId, parentId))
 		.thenReturn(new ArrayList<>());
 		assertThat(mapper.readValue(result(get(URL + "{parentId}/students", schoolId, parentId)),
+				new TypeReference<List<StudentShortDTO>>() {})).isEmpty();
+	}
+	
+	@Test
+	public void getStudentsWithBills() throws JsonProcessingException, Exception {
+		assertThat(mapper.readValue(result(get(URL + "{parentId}/students/bills", schoolId, parentId)),
+				new TypeReference<List<StudentShortDTO>>() {}).get(0).getId()).contains(studentId);
+
+		Mockito.when(schoolAdminServiceImpl.getStudentsWithBills(schoolId, parentId))
+		.thenReturn(new ArrayList<>());
+		assertThat(mapper.readValue(result(get(URL + "{parentId}/students/bills", schoolId, parentId)),
 				new TypeReference<List<StudentShortDTO>>() {})).isEmpty();
 	}
 
